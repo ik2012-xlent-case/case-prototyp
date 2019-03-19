@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: davvv
- * Date: 2019-02-20
- * Time: 09:30
- */
 $history_activites = array(
     1 => 'Övrigt',
     2 => 'Kundbesök',
@@ -20,19 +14,16 @@ $history_activites = array(
     12 => 'Sälj (ej intresserad)',
     13 => 'Sälj (ej svar)'
 );
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="icon" 
-      type="image/x-icon" 
-      href="./favicon.ico">
-
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/datatable.css">
 </head>
 <body>
 
@@ -43,12 +34,10 @@ $history_activites = array(
 </div>
 
 <div class="container-fluid" style="padding: 0;">
-
     <nav class="navbar navbar-expand navbar-dark" id="header" style="background-color: #1187B8">
         <div class="col-sm-10">
             <span class="form-inline" style="padding-left: 35px">
                 <input type="text" class="form-control" placeholder="Sök.." id="search-field">
-                <!--<button class="btn btn-primary"  style="background-color: #BF0F0F; border-color: #BF0F0F; margin-left: 10px" type="submit">Sök</button>-->
             </span>
         </div>
         <div class="col-sm-2">
@@ -57,32 +46,28 @@ $history_activites = array(
             </form>
         </div>
     </nav>
-
-    <div style="display: none; margin-top: 50px; margin-bottom: 50px"  id="adv-search">
-
-    </div>
-
+    <div style="display: none; margin-top: 50px; margin-bottom: 50px"  id="adv-search"></div>
     <div style="margin-top: 15px; margin-bottom: 15px; display: flex; justify-content: center" id="cust">
         <div class="col-11">
-    <table id="tbl_kundlista" class="table table-hover">
-        <thead>
-        <tr class="gridhead">
-            <th scope="col" id="table-id">#</th>
-            <th scope="col" id="table-företag">Företag</th>
-            <th scope="col" id="table-ort">Ort</th>
-            <th scope="col" id="table-län">Län</th>
-            <th scope="col" id="table-orgnr">Orgnr</th>
-            <th scope="col" id="table-karta">Karta</th>
-            <th scope="col" id="table-bransch">Bransch</th>
-            <th scope="col" id="table-avtal">Avtal</th>
-            <th scope="col" id="table-fakturerat">Fakturerat</th>
-            <th scope="col" id="table-kontaktperson">Kontaktperson</th>
-            <th scope="col" id="table-telefon">Telefon</th>
-            <th scope="col" id="table-historik">Senaste historik</th>
-            <th scope="col" id="table-historik"> </th>
-        </tr>
-        </thead>
-        <tbody id="customers" class="">
+            <table id="tbl_kundlista" class="table table-hover">
+                <thead>
+                    <tr class="gridhead">
+                        <th scope="col" id="table-id">#</th>
+                        <th scope="col" id="table-företag">Företag</th>
+                        <th scope="col" id="table-ort">Ort</th>
+                        <th scope="col" id="table-län">Län</th>
+                        <th scope="col" id="table-orgnr">Orgnr</th>
+                        <th scope="col" id="table-karta">Karta</th>
+                        <th scope="col" id="table-bransch">Bransch</th>
+                        <th scope="col" id="table-avtal">Avtal</th>
+                        <th scope="col" id="table-fakturerat">Fakturerat</th>
+                        <th scope="col" id="table-kontaktperson">Kontaktperson</th>
+                        <th scope="col" id="table-telefon">Telefon</th>
+                        <th scope="col" id="table-historik">Senaste historik</th>
+                        <th scope="col" id="table-historik"> </th>
+                    </tr>
+                </thead>
+                <tbody id="customers" class="">
         <?php
         $rowshade = ' class="rowshade"';
         if ( is_array( $customers ) ) {
@@ -151,32 +136,34 @@ $history_activites = array(
                     $orgnr = '';
                 }
                 ?>
-                <tr>
-                    <td><?=$index + 1?></td>
-                    <td class="clickable"><span class="company_name"><?= $customer['cust_name'] . $chain_name ?></span></td>
-                    <td class="company_city"><?= $customer['city'] ?></td>
-                    <td class="company_lan"><?= $customer['lan'] ?></td>
-                    <td class="company_orgnr"><?= $orgnr ?></td>
-                    <td class="company_map <?= $loc_error_color ?>text"><?= $karta ?></td>
-                    <td><?= ucfirst($customer['cat_short']) ?></td>
-                    <td><?= $avtal ?></td>
-                    <td class="company_fak"><?=$faktura?></td>
-                    <td class="company_contact"><?= $customer['contact_name'] ?></td>
-                    <td class="company_phone"><?= $customer['contact_phone'] ?></td>
-
-                    <td><span class=""><?= $latest_historik ?></span></td>
-                    <td><span class=""><?= $historik_btn ?></span></td>
-                </tr>
+                    <tr>
+                        <td><?=$index + 1?></td>
+                        <td class="clickable"><span class="company_name"><?= $customer['cust_name'] . $chain_name ?></span></td>
+                        <td class="company_city"><?= $customer['city'] ?></td>
+                        <td class="company_lan"><?= $customer['lan'] ?></td>
+                        <td class="company_orgnr"><?= $orgnr ?></td>
+                        <td class="company_map <?= $loc_error_color ?>text"><?= $karta ?></td>
+                        <td><?= ucfirst($customer['cat_short']) ?></td>
+                        <td><?= $avtal ?></td>
+                        <td class="company_fak"><?=$faktura?></td>
+                        <td class="company_contact"><?= $customer['contact_name'] ?></td>
+                        <td class="company_phone"><?= $customer['contact_phone'] ?></td>
+                        <td><span class=""><?= $latest_historik ?></span></td>
+                        <td><span class=""><?= $historik_btn ?></span></td>
+                    </tr>
                 <?php
             }
         }?>
-        </tbody>
-    </table>
-</div>
-</div>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/js.js"></script>
+    <?php
+    $time = round((microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"])*1000);
+    echo "Finished in $time ms\n";
+    ?>
 </body>
 </html>

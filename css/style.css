@@ -15,10 +15,6 @@
 #tbl_kundlista{
     font-size: 14px;
 }
-input[type="checkbox"]
-{
-    vertical-align:middle;
-}
 tr:nth-child(even) {
     background-color: #E5F0FA
 }
@@ -38,7 +34,7 @@ tr:nth-child(even) {
 .jumbotron-fluid{
     margin: 0;
     background-color: #11789f;
-    background-image: url("http://users.du.se/~h16kaeri/ik2012/Ska%CC%88rmavbild%202019-03-06%20kl.%2013.21.42.png");
+    background-image: url("../img/background.png");
 }
 @media (min-width: 576px){
     .jumbotron {

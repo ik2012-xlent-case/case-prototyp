@@ -18,22 +18,7 @@ let filter_cols = [
     "Senaste historik"
 ];
 
-let filters = [
-    /*{
-        col: "LÄN",
-        val: [
-            "Dalarna",
-            "Västmanland"
-        ]
-    },
-    {
-        col: "BRANSCH",
-        val: [
-            "Bygg",
-            "System"
-        ]
-    }*/
-];
+let filters = [];
 let active_filters = [];
 
 $(document).ready(function () {
@@ -102,6 +87,26 @@ $(document).ready(function () {
     $(".filter-input").on("click", function(e){
         toggle_filter(this.dataset.header, this.dataset.value);
     });
+
+    $("#openForm").on('click', function(){
+        $("#adv-search").toggle();
+    });
+
+    $('.dropdown-toggle').on('click', function (e) {
+        $(this).next().toggle();
+    });
+    
+    $('.dropdown-menu.keep-open').on('click', function (e) {
+        e.stopPropagation();
+    });
+
+    if(1) {
+        $('body').attr('tabindex', '0');
+    }
+    else {
+        alertify.confirm().set({'reverseButtons': true});
+        alertify.prompt().set({'reverseButtons': true});
+    }
 });
 
 function create_filter(name, vals){
@@ -176,28 +181,6 @@ function search_func(input){
             if (found && index === filter.length || filter.length === 0)
                 tr.style.display = "";
 
-            /*for(let x = 0; x < rows[y].cols.length; x++){
-                const td = rows[y].cols[x].val;
-                const header = rows[y].cols[x].header;
-                found = false;
-                if(td){
-                    for(let j = 0; j < active_filters.length; j++){
-                        if(header === active_filters[j].header.toUpperCase()){
-                            for(let v = 0; v < active_filters[j].vals.length; v++){
-                                if(td === active_filters[j].vals[v].toUpperCase()){
-                                    found = true;
-                                }
-                            }
-                        }
-                    }
-                }
-                if(found){
-                    tr.style.display = "";
-                }
-                else{
-                    tr.style.display = "none";
-                }
-            }*/
         }else{
             tr.style.display = "";
         }        
