@@ -15,6 +15,14 @@ $history_activites = array(
     13 => 'Sälj (ej svar)'
 );
 
+function mb_ucfirst($string, $encoding)
+{
+    $strlen = mb_strlen($string, $encoding);
+    $firstChar = mb_substr($string, 0, 1, $encoding);
+    $then = mb_substr($string, 1, $strlen - 1, $encoding);
+    return mb_strtoupper($firstChar, $encoding) . $then;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +45,7 @@ $history_activites = array(
     <nav class="navbar navbar-expand navbar-dark" id="header" style="background-color: #1187B8">
         <div class="col-sm-10">
             <span class="form-inline" style="padding-left: 35px">
-                <input type="text" class="form-control" placeholder="Sök.." id="search-field">
+                <input type="text" class="form-control" placeholder="Sök.." id="search-field" style="width: 30%">
             </span>
         </div>
         <div class="col-sm-2">
@@ -143,7 +151,7 @@ $history_activites = array(
                         <td class="company_lan"><?= $customer['lan'] ?></td>
                         <td class="company_orgnr"><?= $orgnr ?></td>
                         <td class="company_map <?= $loc_error_color ?>text"><?= $karta ?></td>
-                        <td><?= ucfirst($customer['cat_short']) ?></td>
+                        <td><?= mb_ucfirst($customer['cat_short'], 'UTF-8') ?></td>
                         <td><?= $avtal ?></td>
                         <td class="company_fak"><?=$faktura?></td>
                         <td class="company_contact"><?= $customer['contact_name'] ?></td>
